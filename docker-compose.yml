@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   spring-app:
-    build: gabrilearthur11333/spring-app
+    image: gabrilearthur11333/spring-app
     ports:
       - "8080:8080"
     environment:
