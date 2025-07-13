@@ -1,0 +1,31 @@
+USE steminedb;
+
+INSERT INTO users (name, email, password, date_of_birth, profile_photo_url, area_of_interest, experience_level, purpose_of_mentoring, biography, has_disability, disability_type, adaptation_needed, linkedin_url, portfolio_url, github_url, lattes_url)
+VALUES (
+    'Admin STEMINE',
+    'admin@stemine.com', -- Email do seu admin
+    '$2a$10$a4K0F3gMU.BAPcw2dns/yO.yag4YYhvaqPSPqjDMjrUCHGhQ9v48W', -- COLOQUE A SENHA HASH AQUI
+    '1990-01-01', -- Data de nascimento fictícia
+    NULL,
+    'Administração do Sistema',
+    'Sênior',
+    'Gerenciamento e suporte da plataforma STEMINE.',
+    'Responsável pela administração e manutenção do sistema.',
+    FALSE,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+);
+
+-- Obtenha o ID do usuário que você acabou de criar
+SELECT id FROM users WHERE email = 'admin@stemine.com';
+-- Anote o 'id' retornado. Por exemplo, digamos que seja '1' ou '2' (se 'Maria Helena' for '1').
+
+INSERT INTO user_roles (user_id, role_id)
+VALUES (
+    (SELECT id FROM users WHERE email = 'admin@stemine.com'), -- ID do usuário admin
+    (SELECT id FROM roles WHERE name = 'ROLE_ADMIN') -- ID da role ADMIN
+);
